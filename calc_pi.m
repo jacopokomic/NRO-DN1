@@ -20,17 +20,21 @@ zgoraj = @(m) sqrt(1 - m.^2);
 spodaj = @(m) -sqrt(1 - m.^2);
 
 axis square
-plot(x1, y1, "ro")
+plot(x1, y1, "ro", "DisplayName","točke znotraj krožnice")
 hold on
 axis square
-plot(x2, y2, "bx")
+plot(x2, y2, "bx","DisplayName","točke znotraj kvadrata in izven krožnice")
 hold on
 axis square
-plot(x3, y3, "k.")
+plot(x3, y3, "k.", "DisplayName","točke izven kvadrata")
 hold on
 axis square
-plot(m, zgoraj(m), "k", LineWidth = 2)
-plot(m, spodaj(m), "k", LineWidth = 2)
+plot(m, zgoraj(m), "k","DisplayName","zgornji in", LineWidth = 2)
+plot(m, spodaj(m), "k","DisplayName","spodnji del krožnice", LineWidth = 2)
+legend
+title("Aproksimacija π po metodi Monte Carlo")
+xlabel("x")
+ylabel("y")
 
 function [aproksimacija1, odstopanje1] = area_pi(krog1, kvadrat1)
 kr = size(krog1, 1);
